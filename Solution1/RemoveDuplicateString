@@ -1,0 +1,51 @@
+package com.naren.problem.number1;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+public class RemoveDuplicateString {
+	
+	private static String file;
+	
+	@SuppressWarnings("resource")
+	public static void main(String[] args) {
+		Set<String> dataSet = new HashSet<String>();
+		List<String> alist = new ArrayList<String>();
+				
+		file = "C:\\Users\\narendra\\Desktop\\Input.txt";
+		
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+			String str;
+			int num = Integer.valueOf(br.readLine());
+			while ((str = br.readLine()) != null && num > 0) {
+				dataSet.add(str);
+				num--;
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		Iterator<String> itr = dataSet.iterator();
+		while (itr.hasNext()) {
+			alist.add(itr.next());
+		}
+		
+		Collections.sort(alist);
+		
+		for (String str : alist) {
+			System.out.println(str);
+		}
+	}
+}
